@@ -22,7 +22,7 @@ a.Accuracy score. b.Confusion matrix. c.Classification report.
 
 11.End
 Program:
-Program to implement the prediction of iris species using SGD Classifier.
+##Program to implement the prediction of iris species using SGD Classifier.
 Developed by: Dhivakar B
 RegisterNumber: 212225040075
 
@@ -34,29 +34,29 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import SGDClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
-# Step 1: Load dataset
+
 iris = load_iris()
 X = iris.data
 y = iris.target
 
-# Step 2: Train-test split
+
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
 
-# Step 3: Feature scaling
+
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
-# Step 4: Build and train SGD Classifier
+
 model = SGDClassifier(loss="log_loss", max_iter=1000, tol=1e-3, random_state=42)
 model.fit(X_train, y_train)
 
-# Step 5: Predictions
+
 y_pred = model.predict(X_test)
 
-# Step 6: Evaluation
+
 print("✅ Accuracy:", accuracy_score(y_test, y_pred))
 
 cm = confusion_matrix(y_test, y_pred)
@@ -68,6 +68,7 @@ print("\nConfusion Matrix:\n", cm_df)
 report = classification_report(y_test, y_pred, target_names=iris.target_names, output_dict=True)
 report_df = pd.DataFrame(report).transpose()
 print("\nClassification Report:\n", report_df.round(2))
+##
 Output:
 <img width="914" height="688" alt="Image 2026-05-15 at 2 16 20 PM" src="https://github.com/user-attachments/assets/a077fd3d-e7d7-46d3-ad1b-d701450dc118" />
 
